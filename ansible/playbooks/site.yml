@@ -1,0 +1,10 @@
+---
+- name: Playbook principal de aprovisionamiento
+  hosts: all
+  gather_facts: false
+  roles:
+    - common
+  tasks:
+    - name: Mensaje de verificacion de ejecucion
+      ansible.builtin.debug:
+        msg: "El playbook principal ha validado la sintaxis exitosamente."

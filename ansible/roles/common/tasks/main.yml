@@ -1,0 +1,7 @@
+---
+- name: Asegurar que el mensaje de bienvenida este configurado
+  ansible.builtin.debug:
+    msg: "Iniciando despliegue y verificacion de configuracion base"
+
+- name: Validar estado del sistema
+  ansible.builtin.ping:

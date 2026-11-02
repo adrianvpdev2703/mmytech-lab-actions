@@ -1,0 +1,71 @@
+name: CI - Verificacion de Codigo Python y Ansible
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # ==========================================
+  # JOB 1: Verificacion y Pruebas de Python
+  # ==========================================
+  python-checks:
+    name: Lint & Tests (Python)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar entorno de Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar dependencias de Python
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Analisis estatico de sintaxis y estilo (Flake8)
+        run: |
+          # Falla si hay errores de sintaxis, variables sin usar o violaciones de estilo
+          flake8 src/ tests/ --count --max-line-length=100 --statistics
+
+      - name: Ejecutar pruebas unitarias (Pytest)
+        run: |
+          pytest -v tests/
+
+  # ==========================================
+  # JOB 2: Verificacion de Sintaxis de Ansible
+  # ==========================================
+  ansible-checks:
+    name: Syntax & Lint (Ansible)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar entorno de Python para Ansible
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar Ansible y herramientas de linting
+        run: |
+          python -m pip install --upgrade pip
+          pip install ansible-core ansible-lint
+
+      - name: Comprobacion estricta de sintaxis (Syntax-Check)
+        run: |
+          ansible-playbook --syntax-check ansible/playbooks/site.yml -i ansible/inventory/hosts.ini
+
+      - name: Analisis de mejores practicas con ansible-lint
+        run: |
+          ansible-lint ansible/playbooks/site.yml

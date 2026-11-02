@@ -1,0 +1,6 @@
+---
+# Configuracion para ansible-lint en CI
+exclude_paths:
+  - .github/
+warn_list:
+  - experimental
