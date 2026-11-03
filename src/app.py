@@ -2,6 +2,9 @@
 Modulo de utilidades para validacion de configuraciones y entornos.
 """
 
+import os  # Error Flake8 F401: módulo importado pero nunca usado
+x = 100    # Error Flake8 F841: variable asignada pero nunca usada
+
 
 def check_host_status(host: str) -> dict:
     """
