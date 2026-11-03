@@ -15,6 +15,8 @@ jobs:
   python-checks:
     name: Lint & Tests (Python)
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
 
     steps:
       - name: Descargar codigo del repositorio
@@ -33,12 +35,11 @@ jobs:
 
       - name: Analisis estatico de sintaxis y estilo (Flake8)
         run: |
-          # Falla si hay errores de sintaxis, variables sin usar o violaciones de estilo
           flake8 src/ tests/ --count --max-line-length=100 --statistics
 
       - name: Ejecutar pruebas unitarias (Pytest)
         run: |
-          pytest -v tests/
+          python -m pytest -v tests/
 
   # ==========================================
   # JOB 2: Verificacion de Sintaxis de Ansible
@@ -46,6 +47,9 @@ jobs:
   ansible-checks:
     name: Syntax & Lint (Ansible)
     runs-on: ubuntu-latest
+    env:
+      ANSIBLE_ROLES_PATH: ansible/roles
+      ANSIBLE_CONFIG: ansible.cfg
 
     steps:
       - name: Descargar codigo del repositorio

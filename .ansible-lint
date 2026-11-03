@@ -1,6 +1,10 @@
 ---
-# Configuracion para ansible-lint en CI
+profile: min
 exclude_paths:
   - .github/
+skip_list:
+  - yaml[line-length]
+  - meta-no-info
+  - meta-runtime
 warn_list:
   - experimental
