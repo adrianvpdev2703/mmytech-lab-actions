@@ -35,7 +35,7 @@ jobs:
 
       - name: Analisis estatico de sintaxis y estilo (Flake8)
         run: |
-          flake8 src/ tests/ --count --max-line-length=100 --statistics
+          flake8 src/ tests/ --count --max-line-length=100 --format='::error file=%(path)s,line=%(row)d,col=%(col)d::%(code)s %(text)s'
 
       - name: Ejecutar pruebas unitarias (Pytest)
         run: |
