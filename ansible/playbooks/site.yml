@@ -1,7 +1,7 @@
 ---
 - name: Playbook principal de aprovisionamiento
   hosts: all
-  gather_facts: false
+    gather_facts: false
   roles:
     - common
   tasks:
