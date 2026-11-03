@@ -14,7 +14,7 @@ def check_host_status(host: str) -> dict:
     return {
         "host": clean_host,
         "is_valid": len(clean_host) > 0,
-        "status": "active"
+        "status": "error_intencional"
     }
 
 
