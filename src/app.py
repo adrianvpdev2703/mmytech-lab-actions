@@ -2,6 +2,9 @@
 Modulo de utilidades para validacion de configuraciones y entornos.
 """
 
+import os;
+variable_test=10;
+
 
 def check_host_status(host: str) -> dict:
     """
