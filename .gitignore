@@ -11,3 +11,6 @@ env/
 # Ansible
 *.retry
 .ansible/
+
+# Diapositivas
+/diapositivas/
