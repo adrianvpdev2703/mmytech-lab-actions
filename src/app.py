@@ -2,6 +2,8 @@
 Modulo de utilidades para validacion de configuraciones y entornos.
 """
 
+import os
+
 
 def check_host_status(host: str) -> dict:
     """
@@ -14,7 +16,7 @@ def check_host_status(host: str) -> dict:
     return {
         "host": clean_host,
         "is_valid": len(clean_host) > 0,
-        "status": "active"
+        "status": "error"
     }
 
 
