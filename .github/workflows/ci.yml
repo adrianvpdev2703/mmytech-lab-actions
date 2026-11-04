@@ -25,8 +25,8 @@ jobs:
       - name: Configurar entorno de Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          python-version: "3.11"
+          cache: "pip"
 
       - name: Instalar dependencias de Python
         run: |
@@ -58,8 +58,8 @@ jobs:
       - name: Configurar entorno de Python para Ansible
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          python-version: "3.11"
+          cache: "pip"
 
       - name: Instalar Ansible y herramientas de linting
         run: |
