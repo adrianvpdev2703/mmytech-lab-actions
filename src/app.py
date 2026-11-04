@@ -3,8 +3,6 @@ Modulo de utilidades para validacion de configuraciones y entornos.
 """
 
 
-import os
-
 def check_host_status(host: str) -> dict:
     """
     Verifica de manera basica la validez de un hostname o IP.
